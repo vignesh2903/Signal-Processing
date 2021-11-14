@@ -1,0 +1,16 @@
+clc;
+clear all;
+close all;
+N = 32;
+n = [0:1:N-1];
+k = [0:1:N-1];
+x = [1 1 1 1 1 zeros(1,27)];
+WN = exp(-1i*2*pi/N);
+nk = n'*k;
+WNnk = WN .^nk;
+xk = x * WNnk;
+stem(k/32, abs(xk), 'ro');
+grid;
+xlabel('freq');
+ylabel('|H(e^{j\omega})|');
+title('DFT without inbuild function');
